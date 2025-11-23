@@ -5,6 +5,7 @@
 # Ex.No:21
   Implement a C program to demonstrate call by value and call by reference by swapping two integers using separate functions.
 # Date : 
+22/11/2025
 # Aim:
  To implement a C program that illustrates the difference between call by value and call by reference by swapping two integer variables using two separate functions.
 # Algorithm:
@@ -39,7 +40,42 @@
 ### Step 12: 
   Stop
 # Program:
+```
+#include <stdio.h>
+
+void swapv(int x, int y)  
+{
+    int temp;
+    temp = x;
+    x = y;
+    y = temp;
+    printf("swapv: x = %d, y = %d", x, y);
+}
+
+void swapr(int *x, int *y)  
+{
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+    printf("swapr: x = %d, y = %d", *x, *y);
+}
+int main()
+{
+    int a = 56, b = 44;
+    printf("Before swapv: a = %d, b = %d\n", a, b);
+    swapv(a, b);
+    printf("\nAfter swapv: a = %d, b = %d\n", a, b);
+
+    printf("\n\nBefore swapr: a = %d, b = %d\n", a, b);
+    swapr(&a, &b);
+    printf("\nAfter swapr: a = %d, b = %d\n", a, b);
+    return 0;
+}
+```
 # Output:
+<img width="419" height="334" alt="image" src="https://github.com/user-attachments/assets/940bf583-75e5-419e-9c22-fc64211c15e7" />
+
 # Result: 
   Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -49,6 +85,7 @@
 # Ex.No:22
   Implement a C program to generate the Fibonacci series using a recursive function. The program should accept a positive integer n and display the first n terms of the Fibonacci sequence.
 # Date : 
+22/11/2025
 # Aim:
   To implement a C program that uses a recursive function to generate and display the Fibonacci series for a given number of terms.
 # Algorithm:
@@ -77,7 +114,27 @@
 ### Step 10:
   Stop
 # Program:
+```
+#include <stdio.h>
+int fibo(int x) {
+    if (x == 0 || x == 1)
+        return x;
+    else
+        return fibo(x - 1) + fibo(x - 2);
+}
+int main() {
+    int n, i;
+    printf("n is ");
+    scanf("%d", &n);
+    printf("Fibonacci series of %d terms:\n", n);
+    for (i = 0; i < n; i++)
+        printf("%d ", fibo(i));
+    return 0;
+}
+```
 # Output:
+<img width="399" height="283" alt="image" src="https://github.com/user-attachments/assets/e989e6b0-527e-4121-a038-e07c803629c4" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -87,6 +144,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # Ex.No:23
    Implement a C program to demonstrate recursion by printing a sequence of even or odd numbers from a given lower limit to an upper limit, with each recursive call progressing by 2.
 # Date : 
+22/11/2025
 # Aim:
   To implement a C program that uses a recursive function to print even or odd numbers in a specified range based on the starting value provided by the user.
 # Algorithm:
@@ -119,7 +177,26 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 12:
   Stop
 # Program:
+```
+#include <stdio.h>
+void series(int l,int u);
+int main() {
+    int ll,ul;
+    scanf("%d %d",&ll,&ul);
+    printf("Even/odd Numbers from %d to %d are: ",ll,ul);
+    series(ll,ul);
+    return 0;
+}
+void series(int l,int u) {
+    if (l>=u+1)
+        return;
+    printf("%d ",l);
+    series(l+2,u);
+}
+```
 # Output:
+<img width="1098" height="246" alt="image" src="https://github.com/user-attachments/assets/89810ba0-a584-463d-909e-5490ac60327a" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -129,6 +206,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # Ex.No:24
    Implement a C program that dynamically allocates memory using calloc(), accepts integer inputs from the user, computes their sum, and prints the sum.
 # Date : 
+22/11/2025
 # Aim:
   To implement a C program that dynamically allocates memory for an array of integers using calloc(), accepts elements from the user, computes their sum, and displays the sum.
 # Algorithm:
@@ -161,7 +239,40 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 11:
   Stop
 # Program:
+```
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int *ptr;
+    int n, i, sum = 0;
+
+    printf("Enter the number of integers: ");
+    scanf("%d", &n);
+
+    ptr = calloc(n, sizeof(int));
+
+    if (ptr == NULL)
+        printf("Memory allocation failed.\n");
+
+    printf("Enter %d integers:\n", n);
+    for (i = 0; i < n; i++)
+        scanf("%d", (ptr + i));
+
+    for (i = 0; i < n; i++)
+        sum += *(ptr + i);
+
+    printf("Sum of the entered integers = %d\n", sum);
+
+    free(ptr);
+
+    return 0;
+}
+```
 # Output:
+<img width="524" height="343" alt="image" src="https://github.com/user-attachments/assets/29ef28a1-cff2-4c22-8061-46623a44bd8d" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
 
@@ -171,6 +282,7 @@ Thus, the program was implemented and executed successfully, and the required ou
 # Ex.No:25
    Implement a C program that reads a set of integers into an array and displays the array elements using a user-defined function.
 # Date : 
+22/11/2025
 # Aim:
   To implement a C program that reads integers into an array and displays the elements using a user-defined function.
 # Algorithm:
@@ -197,6 +309,33 @@ Thus, the program was implemented and executed successfully, and the required ou
 ### Step 10:
   Stop
 # Program:
+```
+#include <stdio.h>
+
+void displayArray(int *arr, int size);
+int main() {
+    int arr[20];
+    int i,n;
+
+    printf("Enter no of integers: ");
+    scanf("%d",&n);
+
+    for (i = 0; i < n; i++)
+        scanf("%d", &arr[i]);
+    displayArray(arr, n);
+    return 0;
+}
+void displayArray(int *arr, int size) {
+    int i;
+    printf("Array elements are:\n");
+
+    for (i = 0; i < size; i++) {
+        printf("%d ", *(arr + i));   
+    }
+}
+```
 # Output:
+<img width="479" height="373" alt="image" src="https://github.com/user-attachments/assets/bf083bab-bd11-4072-895d-9160635e7633" />
+
 # Result: 
 Thus, the program was implemented and executed successfully, and the required output was obtained.
